@@ -1,7 +1,6 @@
 // PaymentPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import emailjs from "emailjs-com";
 
 const PaymentPage = () => {
   const [amount, setAmount] = useState("");
@@ -12,30 +11,7 @@ const PaymentPage = () => {
     const email = prompt("Please enter your email address:");
     if (email) {
       // Handle the donation logic and payment gateway integration here
-
-      // Send the invoice to the provided email address
-      const templateParams = {
-        to_email: email,
-        subject: "Invoice for Donation",
-        amount: amount, // Add the amount to the template params
-      };
-
-      // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_USER_ID' with your actual values
-      emailjs
-        .send(
-          "service_59w9ui6",
-          "template_idexlo9", // Replace this placeholder with your actual EmailJS template ID
-          templateParams,
-          "FM4SOtO9rjvT97whM"
-        )
-        .then(() => {
-          // Success message or further navigation logic
-          console.log("Invoice email sent successfully");
-        })
-        .catch((error) => {
-          // Error handling
-          console.error("Failed to send invoice email:", error);
-        });
+      // Send invoice to the provided email address
 
       // Clear the form
       setAmount("");
