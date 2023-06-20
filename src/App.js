@@ -1,21 +1,30 @@
-// App.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import PaymentPage from "./components/PaymentPage";
+import Invoice from "./components/Invoice";
 
-const App = () => {
+function App() {
   return (
-    <div className="container mx-auto text-center">
-      <h1 className="text-3xl font-bold mb-6">
-        Welcome to the Donation Website
-      </h1>
-      <Link
-        to="/payment"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Donate Now
-      </Link>
-    </div>
+    <Router>
+      <div className="bg-slate-200">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/invoice" element={<Invoice />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
